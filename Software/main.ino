@@ -1,4 +1,53 @@
 // ===================================================================================
+// Project:   Moisture-Duck - Soil Moisture Monitor based on ATtiny13A
+// Version:   v1.0
+// Year:      2023
+// Github:    https://github.com/MakersFunDuck
+// Youtube:   https://www.youtube.com/@makersfunduck
+// License:   GNU General Public License v3.0
+// ===================================================================================
+//
+// Description:
+// ------------
+// The ATtiny13 is programmed to enter sleep mode for most of the time.
+// It utilizes the watchdog timer to wake up every 2 minutes and measure soil moisture,
+// comparing it to a preset threshold value.
+// If the soil is too dry, it triggers a brief acoustic signal from the buzzer before going back to sleep mode.
+//
+// Additionally, the Moisture-Duck can also be activated by pressing the TEST button. (pin
+// change interrupt).  It outputs an acoustic signal to indicate if the battery power is sufficient,
+// followed by measurements of soil moisture until the button is released.
+
+//
+// To calibrate the Moisture-Duck, it should be placed in slightly dry soil,
+// Then voltage 
+//
+// Wiring:
+// -------
+//                                +-\/-+
+//   		   --- RST ADC0 PB5  1|°   |8  Vcc
+//  Soil_Check ------- ADC3 PB3  2|    |7  PB2 ADC1 -------- PWR_CHK
+// 	BUZZER ----------- ADC2 PB4  3|    |6  PB1 AIN1 OC0B --- TEST
+//                          GND  4|    |5  PB0 AIN0 OC0A --- PWR
+//                                +----+
+//
+// Compilation Settings:
+// ---------------------
+// Controller:  ATtiny13A
+// Core:        MicroCore (https://github.com/MCUdude/MicroCore)
+// Clockspeed:  128 kHz internal
+// BOD:         BOD disabled
+// Timing:      Micros disabled
+//
+// You can keep the other default settings as they are.  Don't forget to "Burn bootloader"!
+// before proceeding.
+// There are no Arduino core functions or libraries incorporated in this project. 
+// You can use the makefile for compiling without the Arduino IDE.
+// To program without Arduino IDE Fuse settings are: -U lfuse:w:0x3b:m -U hfuse:w:0xff:m
+
+
+
+// ===================================================================================
 // Libraries and Definitions
 // ===================================================================================
 
